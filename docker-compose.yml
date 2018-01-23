@@ -6,6 +6,7 @@ services:
       - db
     volumes:
       - "${MOODLE_DOCKER_WWWROOT}:/var/www/html"
+      - "${PHPUNITPHAR}:/usr/local/lib/phpunitlib"
     environment:
       MOODLE_DOCKER_DBTYPE: mysqli
       MOODLE_DOCKER_DBCOLLATION: utf8mb4_bin
@@ -17,6 +18,7 @@ services:
       MOODLE_DOCKER_WEB_PORT: 8002
     ports:
       - "8002:80"
+      - "9000:9000"
   db:
     image: mysql:5
     command: >
@@ -30,3 +32,7 @@ services:
       MYSQL_DATABASE: moodle
       MYSQL_USER: moodleuser
       MYSQL_PASSWORD: "yourpassword"
+    volumes:
+      - /opt/mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
