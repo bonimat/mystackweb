@@ -19,3 +19,13 @@
 | `MOODLE_DOCKER_DB`                             | pgsql, mariadb, mysql, mssql, oracle  | none          | The database server to run against                                           |
 | `MOODLE_DOCKER_WWWROOT`                        | path on your file system              | none          | The path to the Moodle codebase you intend to test                           |
 | `MOODLE_DOCKER_PHP_VERSION`                     | 7.1, 7.0, 5.6                         | 7.1           | The php version to use                                                       |
+
+
+LOGS webserver:  
+
+/var/log/apache2
+
+
+L'immagine riversa i log degli errori e delle richieste in STDOUT e STDERR
+(error.log e access.log sono link simbolici che puntano al STDERR e STDOUT).
+La configurazione del php prevede "error_reporting = 32767" che equivale a E_ALL.
